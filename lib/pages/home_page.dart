@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     return DefaultTabController(
       length: myTabs.length,
       child: Scaffold(
-        backgroundColor: Colors.blueGrey[50],
+        backgroundColor: Colors.white,
         appBar: AppBar(
            backgroundColor: Colors.transparent,
           //icono de a izquierda
