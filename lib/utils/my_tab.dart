@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyTab extends StatelessWidget {
-  //ruta del archivo
+  //Ruta del archivo
   final String iconPath;
 
   const MyTab({super.key, required this.iconPath});
@@ -13,16 +13,16 @@ class MyTab extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: Colors.blueGrey[50],
-          borderRadius: BorderRadius.circular(16)
-          ),
-
-          child: Image.asset(
-            iconPath,
-            color: Colors.grey[800],
-          
-          ),
-      )
+          color: Colors.grey[200],
+          //Borde redondeado
+          borderRadius: BorderRadius.circular(16), 
+        ),
+        //Ruta de la imagen
+        child: Image.asset(
+          iconPath,
+          color: Colors.grey[600],
+        )
+      ) 
     );
   }
 }
