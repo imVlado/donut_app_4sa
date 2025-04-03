@@ -1,3 +1,4 @@
+import 'package:donut_app_4sa/utils/shopping_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:donut_app_4sa/utils/my_tab.dart';
 import 'package:donut_app_4sa/tabs/donut_tab.dart';
@@ -27,7 +28,10 @@ class _HomePageState extends State<HomePage> {
     return DefaultTabController(length: myTabs.length,
       child: Scaffold(
         appBar: AppBar(
+          
+          
           backgroundColor: Colors.transparent,
+          
           //Icono de la izquierda
           leading: Padding(
             padding: const EdgeInsets.all(24.0),
@@ -42,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             //1. Texto Principal (Text)
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             child: Row(
               children: [
                 Text("I want to ", style: TextStyle(
@@ -71,11 +75,12 @@ class _HomePageState extends State<HomePage> {
               PanCakesTab(),
               PizzaTab(),
             ]),
-          )
+          ),
           //4. Carrito (Cart)
+          ShoppingCart()
           ],
         ),
-      ),
+     ),
     );
   }
 }
