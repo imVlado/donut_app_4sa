@@ -43,7 +43,7 @@ class ShoppingCartState extends State<ShoppingCart> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 18),
+            padding: const EdgeInsets.only(left: 20, ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -60,15 +60,20 @@ class ShoppingCartState extends State<ShoppingCart> {
               ],
             ),
           ),
-          ElevatedButton(
-            onPressed: cartItems.isEmpty ? null : () => _showCartDialog(context),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.pink,
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            ),
-            child: const Text(
-              "View Cart",
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          
+          Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: ElevatedButton(
+              onPressed: cartItems.isEmpty ? null : () => _showCartDialog(context),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.pink,
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                
+              ),
+              child: const Text(
+                "View Cart",
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
         ],
