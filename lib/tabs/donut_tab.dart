@@ -1,41 +1,98 @@
-import 'package:donut_app_4sa/utils/donut_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:donut_app_4sa/utils/donut_model.dart';
+import 'package:donut_app_4sa/utils/donut_tile.dart';
+import 'package:donut_app_4sa/utils/shopping_cart.dart';
 
 class DonutTab extends StatelessWidget {
+  final GlobalKey<ShoppingCartState> shoppingCartKey;
 
-  //list of donuts
-  final List donutsOnSale = [
-    //[ donutFlavor, donutStore, donutPrice, donutColor, imageName ],
-    ["Ice Cream", "Portgas D. Ace", "36", Colors.blue, "lib/images/icecream_donut.png"],
-    ["Strawberry", "Pastelitos Vladymir", "45", Colors.red, "lib/images/strawberry_donut.png"],
-    ["Grape Ape", "Navagod Donas", "84", Colors.purple, "lib/images/grape_donut.png"],
-    ["Choco", "Karime Panaderia", "95", Colors.brown, "lib/images/chocolate_donut.png"]
+ DonutTab({super.key, required this.shoppingCartKey});
+
+  final List<DonutModel> donutsOnSale = [
+    DonutModel(
+      name: "Ice Cream",
+      description: "Krispy Kreme",
+      price: 12.0,
+      imgUrl: "lib/images/donuts/icecream_donut.png",
+      cardColor: Colors.blue,
+    ),
+    DonutModel(
+      name: "Strawberry",
+      description: "Krispy Kreme",
+      price: 10.0,
+      imgUrl: "lib/images/donuts/strawberry_donut.png",
+      cardColor: Colors.red,
+    ),
+    DonutModel(
+      name: "Grape Ape",
+      description: "Krispy Kreme",
+      price: 8,
+      imgUrl: "lib/images/donuts/grape_donut.png",
+      cardColor: Colors.purple,
+    ),
+    DonutModel(
+      name: "Choco",
+      description: "Krispy Kreme",
+      price: 9.0,
+      imgUrl: "lib/images/donuts/chocolate_donut.png",
+      cardColor: Colors.brown,
+    ), 
+    DonutModel(
+      name: "Coco",
+      description: "Dunkin Donuts",
+      price: 12.0,
+      imgUrl: "lib/images/donuts/coco_donut.png",
+      cardColor: Colors.blue,
+    ),
+    DonutModel(
+      name: "Blueberry",
+      description: "Dunkin Donuts",
+      price: 12.0,
+      imgUrl: "lib/images/donuts/blueberry_donut.png",
+      cardColor: Colors.red,
+    ),
+    DonutModel(
+      name: "Caramel",
+      description: "Dunkin Donuts",
+      price: 10.0,
+      imgUrl: "lib/images/donuts/caramel_donut.png",
+      cardColor: Colors.purple,
+    ),
+    DonutModel(
+      name: "Orange",
+      description: "Dunkin Donuts",
+      price: 15.0,
+      imgUrl: "lib/images/donuts/orange_donut.png",
+      cardColor: Colors.brown,
+    ),
+    
   ];
-
-  DonutTab({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final shoppingCart = shoppingCartKey.currentState;
+
     return GridView.builder(
-      //Prepa 1: cómo se va a organizar
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        //numero de columnas
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        //Proporcion entre ancho y alto 
-        childAspectRatio: 1/1.5),
-      //Cuantos elementos
-      itemCount: 4,
+        childAspectRatio: 1 / 1.5,
+      ),
+      itemCount: donutsOnSale.length,
       padding: const EdgeInsets.all(12),
-      //Como se construirán
       itemBuilder: (context, index) {
+        final donut = donutsOnSale[index];
         return DonutTile(
-          donutFlavor: donutsOnSale[index][0],
-          donutStore: donutsOnSale[index][1],
-          donutPrice: donutsOnSale[index][2],
-          donutColor: donutsOnSale[index][3],
-          imageName: donutsOnSale[index][4],
+          donutFlavor: donut.name,
+          donutStore: donut.description,
+          donutPrice: donut.price.toStringAsFixed(0),
+          donutColor: donut.cardColor ?? Colors.grey,
+          imageName: donut.imgUrl,
+          onAddToCart: () {
+            shoppingCart?.addItem(donut);
+            
+          },
         );
-      }
+      },
     );
   }
 }

@@ -1,28 +1,38 @@
 import 'package:flutter/material.dart';
 
 class MyTab extends StatelessWidget {
-  //Ruta del archivo
   final String iconPath;
+  final String label;
 
-  const MyTab({super.key, required this.iconPath});
+  const MyTab({
+    super.key,
+    required this.iconPath,
+    required this.label,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Tab(
       height: 50,
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: Colors.grey[200],
-          //Borde redondeado
-          borderRadius: BorderRadius.circular(16), 
-        ),
-        //Ruta de la imagen
-        child: Image.asset(
-          iconPath,
-          color: Colors.grey[600],
-        )
-      ) 
+      child: Column(
+        children: [
+          Image.asset(
+            iconPath,
+
+            color: Colors.grey[800],
+            height: 32,
+            width: 32,
+            
+          ),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 10,
+              color: Colors.grey[800],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
