@@ -22,12 +22,13 @@ class MyTab extends StatelessWidget {
             color: Colors.grey[800],
             height: 32,
             width: 32,
+            fit: BoxFit.cover,
             
           ),
           Text(
             label,
             style: TextStyle(
-              fontSize: 10,
+              fontSize: 9,
               color: Colors.grey[800],
             ),
           ),

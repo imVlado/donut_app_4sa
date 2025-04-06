@@ -24,6 +24,7 @@ class ShoppingCartState extends State<ShoppingCart> {
         );
       } else {
         cartItems.add(item.copyWith(quantity: 1));
+        
       }
       _calculateTotal();
     });
@@ -37,7 +38,7 @@ class ShoppingCartState extends State<ShoppingCart> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: const EdgeInsets.all(18),
+      padding: const EdgeInsets.only(top: 15, bottom: 25),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -47,12 +48,14 @@ class ShoppingCartState extends State<ShoppingCart> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "${cartItems.length} Items | \$${total.toStringAsFixed(2)}",
+                  "$itemCount Items | \$${total.toStringAsFixed(2)}",
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
+
                 ),
+                const SizedBox(height: 3),
                 const Text("Delivery Charges Included"),
               ],
             ),
@@ -112,6 +115,7 @@ class ShoppingCartState extends State<ShoppingCart> {
               setState(() {
                 cartItems.clear();
                 total = 0.0;
+                itemCount = 0; // Reinicia el contador al hacer checkout
               });
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text("Order placed successfully!")),
